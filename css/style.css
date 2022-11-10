@@ -1,0 +1,345 @@
+#title {
+    font-size: 64px;
+    position: absolute;
+    height: 430px;
+    width: 700px;
+    background-color: #000;
+    z-index: 10;
+
+}
+
+#button1 {
+    border: 2px solid #333;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: .4s;
+    position: absolute;
+    height: 40px;
+    width: 150px;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#button1:hover {
+    background-color: yellow;
+    border-color: yellow;
+    color: black;
+}
+
+.kim-game {
+    z-index: 20;
+    position: absolute;
+}
+
+/* パラメータビュー */
+#parameterView {
+    width: 180px;
+    height: 40px;
+    padding-top: 15px;
+    border: 3px solid;
+    border-color: white;
+    border-radius: 3px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-color: #333333;
+    color: #FFFFFF;
+    width: 700px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div {
+    background-color: black;
+    color: #fff;
+}
+
+
+/* 敵画像ビュー */
+#enemyImageView {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* コマンドビュー */
+#commandView {
+    display: inline-block;
+    justify-content: right;
+    width: 100px;
+    height: 110px;
+    text-align: center;
+    vertical-align: top;
+    margin: 10px 0 0 30px;
+    padding: 5px;
+    border: 3px solid;
+    border-color: white;
+    border-radius: 3px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* メッセージビュー */
+#messageView {
+    display: inline-block;
+    justify-content: right;
+    width: 250px;
+    height: 110px;
+    text-align: left;
+    vertical-align: top;
+    margin: auto;
+    padding: 10px 10px 10px 20px;
+    border: 3px solid;
+    border-color: white;
+    border-radius: 6px;
+}
+
+p {
+    margin: 0;
+    font-size: 16px;
+}
+
+
+.hp>div:first-of-type::after {
+    content: '/';
+    margin: 0 5px;
+}
+
+
+
+/*下部のボックスを右に寄せる*/
+.box-right {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/*岸田さん戦闘コマンド*/
+.radio-group {
+    position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid #fff;
+    color: #fff;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 0;
+}
+
+.radio-group::before {
+    position: absolute;
+    top: -0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    content: attr(data-title);
+}
+
+.radio-area {
+    margin-bottom: 0.5rem;
+}
+
+.radio-area input[type=radio] {
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: .3s;
+}
+
+.radio-area label {
+    cursor: pointer;
+}
+
+.radio-area input[type=radio]:checked::before {
+    position: absolute;
+    top: -.4rem;
+    left: -0.2rem;
+    width: 0;
+    height: 0;
+    border: solid 7px transparent;
+    border-left-color: #fff;
+    margin-top: -7px;
+    content: '';
+}
+
+@keyframes shake {
+    from {
+        transform: translateX(-5px) translateY(0px);
+    }
+
+    20% {
+        transform: translateX(5px) translateY(0px);
+    }
+
+    40% {
+        transform: translateX(-10px) translateY(-3px);
+    }
+
+    60% {
+        transform: translateX(10px) translateY(0px);
+    }
+
+    80% {
+        transform: translateX(-10px) translateY(0px);
+    }
+
+    to {
+        transform: translateX(-5px) translateY(0px);
+    }
+}
+
+li {
+    color: #fff;
+}
+
+/*核*/
+a {
+    /* ブラウザ特有のスタイルを無効に */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 5px;
+    font-size: 20px;
+    background-color: red;
+    color: #000;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 0;
+    transition: 0.3s;
+    font-weight: bold;
+    width: 20px;
+    height: 22px;
+}
+
+/* ホバー時（カーソルをのせた時）の見た目 */
+a:hover {
+    background-color: #fff000;
+}
+
+
+/*endrole*/
+/*** エンドロール ***/
+.end-roll {
+    position: relative;
+    top: 0px;
+    width: 700px;
+    height: 100px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;
+    /*範囲外は非表示*/
+    font-size: 2rem;
+    text-transform: uppercase;
+    /*全て大文字*/
+    z-index: 30;
+}
+
+.end-roll p {
+    position: absolute;
+    bottom: -100px;
+    /*画面外に控える*/
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    /*中央寄せ*/
+    animation: up-text 20s linear forwards;
+}
+
+/*** 各段落ごとに遅延時間を設定 ***/
+.end-roll p:nth-child(2) {
+    animation-delay: 4s
+}
+
+.end-roll p:nth-child(3) {
+    animation-delay: 6s
+}
+
+.end-roll p:nth-child(4) {
+    animation-delay: 8s
+}
+
+.end-roll p:nth-child(5) {
+    animation-delay: 10s
+}
+
+.end-roll p:nth-child(6) {
+    animation-delay: 12s
+}
+
+.end-roll p:nth-child(7) {
+    animation-delay: 14s
+}
+
+.end-roll p:nth-child(8) {
+    animation-delay: 16s
+}
+
+.end-roll p:nth-child(9) {
+    animation-delay: 18s
+}
+
+.end-roll p:nth-child(10) {
+    animation-delay: 20s
+}
+
+.end-roll p:nth-child(11) {
+    animation-delay: 22s
+}
+
+.end-roll p:nth-child(12) {
+    animation-delay: 24s
+}
+
+.end-roll p:nth-child(13) {
+    animation-delay: 26s
+}
+
+.end-roll p:nth-child(14) {
+    animation-delay: 28s
+}
+
+.end-roll p:nth-child(15) {
+    animation-delay: 30s
+}
+
+.end-roll p:nth-child(16) {
+    animation-delay: 32s
+}
+
+.end-roll p:nth-child(17) {
+    animation-delay: 34s
+}
+
+
+/*** 上に流れるアニメーション ***/
+@keyframes up-text {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(calc(-100vh - 100px));
+    }
+}
+
+/***項目用スタイル***/
+.role {
+    font-weight: bold;
+}
+
+/***サンプル装飾用***/
+a {
+    color: #fff;
+    text-decoration: none;
+}

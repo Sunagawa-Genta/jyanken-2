@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>superman</title>
+    <script src="https://code.jquery.com/jquery-3.x.x.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<div>
+
+
+    <body>
+        <audio src="audio/offence.mp3" id="play-button1"></audio>
+        <audio src="audio/nigeru.mp3" id="play-button2"></audio>
+        <audio src="audio/start.mp3" id="play-button3"></audio>
+        <audio src="audio/syubi.mp3" id="play-button4"></audio>
+        <audio src="audio/trump.mp3" id="play-button5"></audio>
+
+
+
+        <div id="game">
+            <div id="title">
+                <img src="img/super-man.png">
+                <input type="button" value="START" id="button1" onclick="myStart()">
+            </div>
+        </div>
+        <div id="game-end">
+            <div id="kim-game">
+                <div id="parameterView">
+                    <div id="enemyName"></div>
+                    <div class="hp">
+                        <div id="currentEnemyHp"></div>
+                    </div>
+                    <div id="maxEnemyHp"></div>
+                </div>
+            </div>
+            <div>
+                <div id="enemyImageView">
+                    <div>
+                        <img src="img/34322.png" alt="japan" width="200px" height="130px">
+                    </div>
+                    <div id="kim-picture">
+                        <img src="img/kim_img.png" alt="kim" width="150px" height="150px">
+                    </div>
+                    <div id="kaku">
+                        <a href="https://www.youtube.com/watch?v=ueS7S-7mpsE">核</a>
+                    </div>
+                    <div id="kita">
+                        <img src="img/southkorea.jpg" alt="southkorea" width="200px" height="130px">
+                    </div>
+                </div>
+            </div>
+            <div class="box-right">
+                <div id="kisida-view">
+                    <img src="img/combine_images.jpg" alt="kisidasann" width="160px" height="160px">
+                </div>
+                <div>
+                    <div class="radio-group" data-title="">
+                        <div class="radio-area">
+                            <input type="radio" name="rdo_bg" id="rdobg1" class="rdobg-1">
+                            <label for="rdobg1">こうげき</label>
+                        </div>
+                        <div class="radio-area">
+                            <input type="radio" name="rdo_bg" id="rdobg2">
+                            <label for="rdobg2">にげる</label>
+                        </div>
+                        <div class="radio-area">
+                            <input type="radio" name="rdo_bg" id="rdobg3">
+                            <label for="rdobg3">ぼうぎょ</label>
+                        </div>
+                        <div class="radio-area">
+                            <div>
+                                <input type="radio" name="rdo_bg" id="rdobg4">
+                                <label for="rdobg4">トランプさん</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="messageView">
+                    <p>キムがあらわれた。</p>
+                </div>
+            </div>
+        </div>
+        <div class="end-roll" id="end-roll">
+            <p class="role">- Audio -</p>
+            <p>Youtube</p>
+            <p>Donald Trump</p>
+            <p>Genta Sunagawa</p>
+            <p>Kim Jong-un</p>
+            <p>Humio Kisida</p>
+            <p class="role">- special thanks -</p>
+            <p>Kim Jong-un</p>
+            <p>Donald Trump</p>
+            <p>Humio Kisida</p>
+            <p>G`s ACADEMY</p>
+            <p class="role">- sponsored -</p>
+            <p>G`s ACADEMY</p>
+            <p>G`s ACADEMY unit Yamaguchi</p>
+        </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+    /*start画面*/
+    $("#button1").click(function () {
+        // 1秒かけて非表示にする
+        $("#title").hide(1200);
+    });
+    /*終了*/
+    $("#rdobg4").click(function () {
+        //9秒後にエンド
+        $("#game-end").hide(9000);
+    })
+
+
+    $(`#rdobg2`).on(`click`, function () {
+        const min = 0
+        const max = 2
+        const randomNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
+        if (randomNumber2 === 0) {
+            $(`#messageView`).text(`にげることはできない。`)
+        } else if (randomNumber2 === 1) {
+            $(`#messageView`).text(`ぜったいににげることはできない。`)
+        } else if (randomNumber2 === 2) {
+            $(`#messageView`).text(`こくみんをみすてるのか！`)
+        }
+    });
+
+    $(`#rdobg3`).on(`click`, function () {
+        const min = 1
+        const max = 2
+        const randomNumber3 = Math.floor(Math.random() * (max - min + 1)) + min;
+        if (randomNumber3 === 1) {
+            $(`#messageView`).text(`ミサイルを撃ち落とした。`)
+
+        } else if (randomNumber3 === 2) {
+            $(`#messageView`).text(`アメリカと訓練して守備力が上がった。`)
+        }
+    });
+
+    $(function () {
+        $("#rdobg1").on("click", function () {
+            /** アニメーションプロパティを設定 */
+            $(`#kim-picture`).css("animation", "shake 0.3s");
+            /** ボタン要素をコピーして古いものと置き換え */
+            var copied = $(`#kim-picture`).clone(true);
+            $("#kim-picture").before(copied);
+            $("." + $("#kim-picture").attr("class") + ":last").remove();
+        });
+    });
+
+    /*攻撃時音声*/
+    $('#rdobg1').click(function () {
+        $("#play-button1").get(0).play();
+    });
+    /*逃げる音声*/
+    $('#rdobg2').click(function () {
+        $("#play-button2").get(0).play();
+    });
+    /*スタート音声*/
+    $('#button1').click(function () {
+        $("#play-button3").get(0).play();
+    });
+    /*守り音声*/
+    $('#rdobg3').click(function () {
+        $("#play-button4").get(0).play();
+    });
+    /*トランプさん*/
+    $('#rdobg4').click(function () {
+        $("#play-button5").get(0).play();
+        $("#kita").remove();
+        $("#kim-picture").remove();
+        $("#kaku").remove();
+    });
+
+    /*クリック後に相手が攻撃*/
+    $("#rdobg1").on('click', function () {
+        //1.5秒後
+        $('#messageView').delay(1500).queue(function () {
+            $(this).text("きしだは5のダメージうけた。");
+            $(`#kisida-view`).css("animation", "shake 0.3s");
+            $("#play-button1").get(0).play();
+        });
+    });
+    /*敵の名前など*/
+    const enemyData = {
+        name: "キム",
+        hp: 50
+    }
+
+    function insertText(id, text) {
+        document.getElementById(id).textContent = text;
+    }
+
+    insertText("enemyName", enemyData["name"]);
+    insertText("currentEnemyHp", enemyData["hp"]);
+    insertText("maxEnemyHp", enemyData["hp"]);
+
+    document.getElementById("rdobg1").addEventListener("click", function () {
+        enemyData["hp"] = enemyData["hp"] - 10;
+
+        insertText("currentEnemyHp", enemyData["hp"]);
+
+        if (enemyData["hp"] <= 0) {
+            alert("また遊んでね！");
+        } else if (playerData["hp"] <= 0) {
+            alert("敗北！")
+        }
+
+        document.getElementById("rdobg1").classList.add("deactive");
+
+    });
+    $(`#rdobg1`).on(`click`, function () {
+        $(`#messageView`).text(`ダメージ10あたえた。`)
+    });
+</script>
+</body>
+
+</html>
